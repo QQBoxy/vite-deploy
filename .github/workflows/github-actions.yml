@@ -28,8 +28,15 @@ jobs:
       - name: Install and Build 🔧
         run: npm install && npm run build
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          GITHUB_TOKEN: ${{ secrets.DeployToken }}
-          branch: gh-pages
-          folder: dist
+        run: |
+          rm -rf node_modules/.cache
+          yarn build
+          yarn export
+          cd dist
+          touch .nojekyll
+          git init
+          git config --global user.email ${{ vars.USER_EMAIL }}
+          git config --global user.name ${{ vars.USER_NAME }}
+          git add -A
+          git commit -m 'Deploy to gh-pages'
+          git push -f https://github.com/QQBoxy/vite-deploy.git main:gh-pages
