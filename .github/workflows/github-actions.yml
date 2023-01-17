@@ -37,6 +37,7 @@ jobs:
           git init
           git config --global user.email ${{ vars.USER_EMAIL }}
           git config --global user.name ${{ vars.USER_NAME }}
+          git remote add origin https://${{secrets.DeployToken}}@github.com/QQBoxy/vite-deploy.git
           git add -A
           git commit -m 'Deploy to gh-pages'
-          git push -f https://github.com/QQBoxy/vite-deploy.git main:gh-pages
+          git push -f main:gh-pages
