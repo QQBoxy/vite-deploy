@@ -26,8 +26,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install and Build 🔧
-        run: rm -rf node_modules/.cache
-        run: npm install && npm run build
+        run: |
+          rm -rf node_modules/.cache
+          npm install && npm run build
       - name: Deploy 🚀
         run: |
           rm -rf node_modules/.cache
