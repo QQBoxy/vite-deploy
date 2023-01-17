@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>Hello QQBoxy</div>
+  <div>Hello QQBoxy.</div>
 </template>
 
 <style scoped>
